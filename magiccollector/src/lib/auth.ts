@@ -19,12 +19,12 @@ export const authOptions: NextAuthOptions = {
   ],
   callbacks: {
     async session({ token, session }) {
-      if (token && session.user) {
+      if (token && session.user && session.user.name) {
         session.user.id = token.id;
         session.user.name = token.name;
         session.user.email = token.email;
         session.user.image = token.picture;
-        session.user.username = token.username;
+        session.user.name = token.username;
       }
       return session;
     },
