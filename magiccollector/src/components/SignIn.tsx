@@ -15,7 +15,7 @@ const SignIn = () => {
           User Agreement and Privacy Policy .
         </p>
 
-        <UserAuthForm className="" />
+        <UserAuthForm  />
 
         <p className="px-8 text-center text-sm text-zinc-700">
           New to Breadit?{" "}
