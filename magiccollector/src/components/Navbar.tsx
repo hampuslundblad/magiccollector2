@@ -1,5 +1,4 @@
 import Link from "next/link";
-import { Icons } from "./Icons";
 import { buttonVariants } from "./ui/Button";
 import { getAuthSession } from "@/lib/auth";
 import UserAccountNav from "./UserAccountNav";
@@ -16,7 +15,7 @@ const Navbar = async () => {
             MagicDb
           </p>
         </Link>
-
+        <div  className="h-8 w-8 bg-red"></div>
         {session?.user ? (
           <UserAccountNav user={session.user} />
         ) : (
