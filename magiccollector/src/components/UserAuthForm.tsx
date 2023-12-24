@@ -1,33 +1,46 @@
-import Link from "next/link";
-import { Icons } from "./Icons";
-import { buttonVariants } from "./ui/Button";
-import { getAuthSession } from "@/lib/auth";
-import UserAccountNav from "./UserAccountNav";
+"use client";
 
-const Navbar = async () => {
-  const session = await getAuthSession();
+import { FC, useState } from "react";
+import { Button } from "./ui/Button";
+import { cn } from "@/lib/utils";
+import { signIn } from "next-auth/react";
+import { Icons } from "./Icons";
+import { useToast } from "@/hooks/use-toast";
+interface UserAuthFormProps extends React.HTMLAttributes<HTMLDivElement> {}
+
+const UserAuthForm: FC<UserAuthFormProps> = ({ className, ...props }) => {
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const { toast } = useToast();
+  const loginInWithGoogle = async () => {
+    setIsLoading(true);
+
+    try {
+      await signIn("google");
+    } catch (error) {
+      //toast notification
+      toast({
+        title: "There was a problem.",
+        description: "There was an error loggin in with Google",
+        variant: "destructive",
+      });
+    } finally {
+      setIsLoading(false);
+    }
+  };
 
   return (
-    <div className="fixed top-0 inset-x-0 h-fit bg-zinc-100 border-b border-zinc-300 z-[10] py-2">
-      <div className="container max-w-7xl h-full mx-auto flex items-center justify-between gap-2">
-        <Link href="/" className="flex gap-2 item center">
-          <Icons.logo className="h-8 w-8 sm:h-6 sm:w-6"></Icons.logo>
-          <p className="hidden text-zinc-700 text-sm font-medium md:block">
-            {" "}
-            Breadit
-          </p>
-        </Link>
-
-        {session?.user ? (
-          <UserAccountNav user={session.user} />
-        ) : (
-          <Link href="/sign-in" className={buttonVariants()}>
-            Sign In
-          </Link>
-        )}
-      </div>
+    <div className={cn("flex justify-center", className)} {...props}>
+      <Button
+        onClick={loginInWithGoogle}
+        isLoading={isLoading}
+        size="sm"
+        className="w-full"
+      >
+        {isLoading ? null : <Icons.google className="h-4 w-4 mr-2" />}
+        Google
+      </Button>
     </div>
   );
 };
 
-export default Navbar;
+export default UserAuthForm;
