@@ -2,7 +2,8 @@
  
 import { Card } from "@prisma/client"
 import { ColumnDef } from "@tanstack/react-table"
-import { Star } from "lucide-react"
+import { ArrowUpDown, Star } from "lucide-react"
+import { Button } from "./ui/Button"
  
 // This type is used to define the shape of our data.
 // You can use a Zod schema here if you want.
@@ -11,16 +12,48 @@ import { Star } from "lucide-react"
 export const columns: ColumnDef<Card>[] = [
   {
     accessorKey: "name",
-    header: "Name",
+    header: ({ column }) => {
+        return (
+          <Button
+            variant="ghost"
+            onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+          >
+            Name
+            <ArrowUpDown className="ml-2 h-4 w-4" />
+          </Button>
+        )
+    }
   },
   {
     accessorKey: "set",
-    header: "Set",
+    header: ({ column }) => {
+        return (
+          <Button
+            variant="ghost"
+            onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+          >
+            Set
+            <ArrowUpDown className="ml-2 h-4 w-4" />
+          </Button>
+        )
+    }
   },
   {
     accessorKey: "price",
-    header: "Price",
+    header: ({ column }) => {
+        return (
+          <Button
+            variant="ghost"
+            onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+          >
+            Price
+            <ArrowUpDown className="ml-2 h-4 w-4" />
+          </Button>
+        )
+    },
+  
   },
+  
   {
     accessorKey:"foil",
     header:"Foil",
@@ -30,6 +63,16 @@ export const columns: ColumnDef<Card>[] = [
   },
   {
     accessorKey: "quantity",
-    header: "Quantity",
+    header: ({ column }) => {
+        return (
+          <Button
+            variant="ghost"
+            onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+          >
+            Quantity
+            <ArrowUpDown className="ml-2 h-4 w-4" />
+          </Button>
+        )
+    }
   }
 ]

@@ -24,6 +24,10 @@ const UserAuthForm: FC<UserAuthFormProps> = ({ className, ...props }) => {
         variant: "destructive",
       });
     } finally {
+      toast({
+        title:"Welcome!",
+        variant:"default"
+      })
       setIsLoading(false);
     }
   };
