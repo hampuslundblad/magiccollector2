@@ -10,10 +10,12 @@ const Search = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [filteredValues, setFilteredValues] = useState<string[]>([]);
   const [showTooltip, setShowTooltip] = useState(false);
+  const [cardsPreview, setCardsPreview] = useState(false);
   const addedCardsRef = useRef<string[]>([]);
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSearchValue(event.target.value);
+    setCardsPreview(true);
     setShowTooltip(false); // Reset the tooltip when the user types
     debouncedFilter();
   };
@@ -76,8 +78,12 @@ const Search = () => {
         )}
       </div>
       {isLoading && <LoaderIcon />}
-      <div className="w-fill h-fit mt-2 divde-y divide-solid">
-        {filteredValues.slice(0, 10).map((cardName, index) => (
+      <div
+        className="w-fill h-fit mt-2 divde-y divide-solid"
+        onClick={() => setCardsPreview(false)}
+      >
+        
+        { cardsPreview && filteredValues.slice(0, 10).map((cardName, index) => (
           <SearchItem name={cardName} key={index} />
         ))}
       </div>

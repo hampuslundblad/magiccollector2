@@ -24,21 +24,11 @@ import {
   SelectTrigger,
   SelectValue,
 } from "./ui/select";
+import { AddCardValidator } from "@/lib/validators/card";
 
 
 
-const formSchema = z.object({
-  name: z.string().min(2, {
-    message: "Name must be at least 2 characters.",
-  }),
-  set: z.string().min(2, {
-    message: "Set must be at least 2 characters.",
-  }),
-  foil: z.boolean(),
-  quantity: z.string().min(1, {
-    message: "Quantity must be greater than zero.",
-  }),
-});
+
 
 export type AddCardFormProps = {
     name:string,
@@ -47,8 +37,8 @@ export type AddCardFormProps = {
 }
 
 export function AddCardForm({name, setDefault}: AddCardFormProps) {
-  const form = useForm<z.infer<typeof formSchema>>({
-    resolver: zodResolver(formSchema),
+  const form = useForm<z.infer<typeof AddCardValidator>>({
+    resolver: zodResolver(AddCardValidator),
     defaultValues: {
       name: name,
       set: setDefault,
@@ -58,10 +48,12 @@ export function AddCardForm({name, setDefault}: AddCardFormProps) {
   });
 
   // 2. Define a submit handler.
-  function onSubmit(values: z.infer<typeof formSchema>) {
+  function onSubmit(values: z.infer<typeof AddCardValidator>) {
     // Do something with the form values.
     // ✅ This will be type-safe and validated.
+
     console.log(values);
+    
   }
 
   return (
@@ -131,7 +123,7 @@ export function AddCardForm({name, setDefault}: AddCardFormProps) {
        
       
 
-        <Button type="submit">Submit</Button>
+        <Button type="submit">Add card</Button>
       </form>
     </Form>
   );

@@ -39,7 +39,11 @@ export function DataTable<TData, TValue>({
   const [sorting, setSorting] = useState<SortingState>([]);
   const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([]);
   const {cardData, setCardData} = useContext(CardContext)
-  console.log("Card data data table", cardData)
+  console.log("Card data ",cardData)
+
+  if(cardData !== undefined){
+
+  }
 
   const table = useReactTable({
     data,
@@ -55,7 +59,8 @@ export function DataTable<TData, TValue>({
       columnFilters,
     },
   });
-
+  const [isCardSearchDialogOpen, setIsCardSearchDialogOpen] = useState(false);
+  const [isAddCardDialogOpen, setIsAddCardDialogOpen] = useState(false);
   return (
     <div>
          <div className="flex items-center py-4">
@@ -66,9 +71,9 @@ export function DataTable<TData, TValue>({
             table.getColumn("name")?.setFilterValue(event.target.value)
           }
           className="max-w-sm"
-        />
-        <CardSearchDialog isOpen={true}></CardSearchDialog>
-        <AddCardDialog/>
+        />  
+        <CardSearchDialog isOpen={false}></CardSearchDialog>
+      
       </div>
       <div className="rounded-md border">
         <Table>

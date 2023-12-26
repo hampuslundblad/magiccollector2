@@ -44,16 +44,12 @@ model User {
   emailVerified DateTime?
 
   username String? @unique
-
+  cards   Card[]
   image    String?
   accounts Account[]
   sessions Session[]
 }
 
-model Collection {
-  id    String @id @default(cuid())
-  cards Card[]
-}
 
 model Card {
   id           String     @id @default(cuid())
@@ -63,6 +59,6 @@ model Card {
   quantity     Int
   foil         Boolean
   price        Float
-  collection   Collection @relation(fields: [collectionId], references: [id])
-  collectionId String
+  User         User       @relation(fields: [userId], references: [id], onDelete: Cascade)  
+  userId       String
 }

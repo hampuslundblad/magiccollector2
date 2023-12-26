@@ -5,33 +5,40 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
+  DialogClose,
 } from "@/components/ui/dialog";
 
-import { FC } from "react";
+import { FC, useContext } from "react";
 import { buttonVariants } from "./ui/Button";
 import { cn } from "@/lib/utils";
 import { Input } from "./ui/input";
 import Search from "./Search";
+import { AddCardForm } from "./AddCardForm";
+import { CardContext } from "@/lib/CardContext";
 
-interface SearchCardDialog {
+type CardSearchDialogProps = {
   isOpen: boolean;
-}
+};
 
-const CardSearchDialog: FC<SearchCardDialog> = ({ isOpen }) => {
-  if (!isOpen) return null;
 
+const CardSearchDialog = ({isOpen} :CardSearchDialogProps) => {
+  const {cardData,} = useContext(CardContext)
   return (
     <Dialog>
-      <DialogTrigger className={cn("ml-4", buttonVariants({variant:"outline"}))}>Add card</DialogTrigger>
+      <DialogTrigger
+        className={cn("ml-4", buttonVariants({ variant: "outline" }))}
+      >
+        Add card
+      </DialogTrigger>
       <DialogContent>
         <DialogHeader>
           <DialogTitle>Add a card</DialogTitle>
-          <DialogDescription>
-            Add a card to your collection.
-          </DialogDescription>
+          <DialogDescription>Add a card to your collection.</DialogDescription>
         </DialogHeader>
         <DialogTitle> Name </DialogTitle>
-        <Search/>
+        <Search />
+
+     { cardData != undefined &&  <AddCardForm name={cardData.name} setDefault={cardData.sets[0]} sets={cardData.sets}/> }
       </DialogContent>
     </Dialog>
   );
