@@ -28,6 +28,9 @@ export async function POST(req: Request) {
           set,
           foil,
           quantity: q,
+          imageUrl: "",
+          price:123,
+          userId: session.user.id,
         },
       });
     }
