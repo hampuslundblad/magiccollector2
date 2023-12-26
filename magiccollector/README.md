@@ -34,3 +34,32 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+
+
+## Stack
+### Frontend
+[nextjs](https://nextjs.org/)
+
+[next-auth](https://next-auth.js.org/)
+
+
+###  Forms
+[react-hook-form](https://react-hook-form.com/)
+
+
+[zod for form vaildation](https://zod.dev/)
+
+### UI 
+[shadcn](https://ui.shadcn.com/)
+
+### Styling
+[tailwind](https://tailwindcss.com/)
+
+
+[luicide react](https://lucide.dev/guide/packages/lucide-react)
+
+### ORM
+[prisma](https://www.prisma.io/)
+
+### Database
+[sqlite](https://www.sqlite.org/index.html)

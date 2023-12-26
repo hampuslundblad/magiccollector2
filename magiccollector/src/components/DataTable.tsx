@@ -23,6 +23,7 @@ import {
 import { Button } from "./ui/Button";
 import { useState } from "react";
 import { Input } from "./ui/input";
+import CardSearchDialog from "./CardSearchDialog";
 import AddCardDialog from "./AddCardDialog";
 
 interface DataTableProps<TData, TValue> {
@@ -63,7 +64,8 @@ export function DataTable<TData, TValue>({
           }
           className="max-w-sm"
         />
-        <AddCardDialog isOpen={true}></AddCardDialog>
+        <CardSearchDialog isOpen={true}></CardSearchDialog>
+        <AddCardDialog/>
       </div>
       <div className="rounded-md border">
         <Table>
