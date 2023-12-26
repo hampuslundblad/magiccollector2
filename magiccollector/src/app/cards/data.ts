@@ -16,7 +16,6 @@ const exampleData = [
     quantity: 1,
     foil: true,
     price: 5000,
-    collectionId: "collection-2",
   },
   {
     id: "3",
@@ -26,7 +25,6 @@ const exampleData = [
     quantity: 1,
     foil: false,
     price: 3000,
-    collectionId: "collection-3",
   },
   {
     id: "4",
@@ -36,7 +34,6 @@ const exampleData = [
     quantity: 1,
     foil: false,
     price: 2000,
-    collectionId: "collection-4",
   },
   {
     id: "5",
@@ -46,7 +43,7 @@ const exampleData = [
     quantity: 4,
     foil: false,
     price: 100,
-    collectionId: "collection-5",
+
   },
   {
     id: "6",
@@ -56,7 +53,7 @@ const exampleData = [
     quantity: 3,
     foil: false,
     price: 50,
-    collectionId: "collection-6",
+
   },
   {
     id: "7",
@@ -66,7 +63,7 @@ const exampleData = [
     quantity: 2,
     foil: true,
     price: 80,
-    collectionId: "collection-7",
+
   },
   {
     id: "8",
@@ -76,7 +73,7 @@ const exampleData = [
     quantity: 4,
     foil: false,
     price: 30,
-    collectionId: "collection-8",
+
   },
   {
     id: "9",
@@ -86,7 +83,7 @@ const exampleData = [
     quantity: 2,
     foil: true,
     price: 40,
-    collectionId: "collection-9",
+
   },
   {
     id: "10",
@@ -96,7 +93,7 @@ const exampleData = [
     quantity: 3,
     foil: false,
     price: 50,
-    collectionId: "collection-10",
+
   },
   {
     id: "11",
@@ -106,7 +103,7 @@ const exampleData = [
     quantity: 3,
     foil: true,
     price: 50,
-    collectionId: "collection-10",
+
   },
   {
     id: "12",
@@ -116,7 +113,7 @@ const exampleData = [
     quantity: 3,
     foil: false,
     price: 50,
-    collectionId: "collection-10",
+
   },
   {
     id: "13",
@@ -126,7 +123,7 @@ const exampleData = [
     quantity: 3,
     foil: false,
     price: 50,
-    collectionId: "collection-10",
+
   },
   {
     id: "14",
@@ -136,7 +133,7 @@ const exampleData = [
     quantity: 3,
     foil: true,
     price: 50,
-    collectionId: "collection-10",
+
   },
 ];
 

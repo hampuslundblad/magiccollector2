@@ -1,15 +1,15 @@
 "use client"
  
-import { Card } from "@prisma/client"
 import { ColumnDef } from "@tanstack/react-table"
 import { ArrowUpDown, Star } from "lucide-react"
 import { Button } from "./ui/Button"
+import { TableCardData } from "./DataTable"
  
 // This type is used to define the shape of our data.
 // You can use a Zod schema here if you want.
 
  
-export const columns: ColumnDef<Card>[] = [
+export const columns: ColumnDef<TableCardData>[] = [
   {
     accessorKey: "name",
     header: ({ column }) => {

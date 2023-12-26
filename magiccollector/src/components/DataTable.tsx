@@ -24,8 +24,18 @@ import { Button } from "./ui/Button";
 import { useContext, useState } from "react";
 import { Input } from "./ui/input";
 import CardSearchDialog from "./CardSearchDialog";
-import AddCardDialog from "./AddCardDialog";
 import { CardContext } from "@/lib/CardContext";
+
+export type TableCardData = {
+  id: string
+  name: string,
+  imageUrl:string,
+  set: string,
+  quantity: number,
+  foil: boolean,
+  price: number,
+};
+
 
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[];
@@ -39,7 +49,6 @@ export function DataTable<TData, TValue>({
   const [sorting, setSorting] = useState<SortingState>([]);
   const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([]);
   const {cardData, setCardData} = useContext(CardContext)
-  console.log("Card data ",cardData)
 
   if(cardData !== undefined){
 
