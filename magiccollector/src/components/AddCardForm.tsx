@@ -25,6 +25,8 @@ import {
   SelectValue,
 } from "./ui/select";
 
+
+
 const formSchema = z.object({
   name: z.string().min(2, {
     message: "Name must be at least 2 characters.",
@@ -33,19 +35,25 @@ const formSchema = z.object({
     message: "Set must be at least 2 characters.",
   }),
   foil: z.boolean(),
-  quantity: z.number().int().min(1, {
+  quantity: z.string().min(1, {
     message: "Quantity must be greater than zero.",
   }),
 });
 
-export function AddCardForm() {
+export type AddCardFormProps = {
+    name:string,
+    setDefault:string,
+    sets: string[]
+}
+
+export function AddCardForm({name, setDefault}: AddCardFormProps) {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      name: "",
-      set: "",
+      name: name,
+      set: setDefault,
       foil: false,
-      quantity:0,
+      quantity:"0",
     },
   });
 
@@ -114,7 +122,7 @@ export function AddCardForm() {
         <FormItem>
         <FormLabel>Quantity</FormLabel>
         <FormControl>
-          <Input type="number" placeholder="Quantity" {...field} />
+          <Input type="number" placeholder="Quantity" min={0} {...field} />
         </FormControl>
         <FormMessage />
       </FormItem>

@@ -21,10 +21,11 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { Button } from "./ui/Button";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { Input } from "./ui/input";
 import CardSearchDialog from "./CardSearchDialog";
 import AddCardDialog from "./AddCardDialog";
+import { CardContext } from "@/lib/CardContext";
 
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[];
@@ -37,6 +38,8 @@ export function DataTable<TData, TValue>({
 }: DataTableProps<TData, TValue>) {
   const [sorting, setSorting] = useState<SortingState>([]);
   const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([]);
+  const {cardData, setCardData} = useContext(CardContext)
+  console.log("Card data data table", cardData)
 
   const table = useReactTable({
     data,

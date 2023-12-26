@@ -27,7 +27,7 @@ const AddCardDialog: FC<AddCardDialogProps> = ({}) => {
           <DialogDescription>Add a card to your collection.</DialogDescription>
         </DialogHeader>
       
-        <AddCardForm/>
+        <AddCardForm name={""} setDefault={""} sets={[]}/>
       </DialogContent>
     </Dialog>
   );

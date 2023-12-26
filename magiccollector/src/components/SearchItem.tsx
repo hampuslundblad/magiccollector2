@@ -1,11 +1,27 @@
-import { FC } from 'react'
-
+import { FC, useContext } from "react";
+import axios from "axios";
+import { searchCard } from "@/lib/scryfall";
+import { CardContext } from "@/lib/CardContext";
 interface SearchItemProps {
-  name: string
+  name: string;
 }
 
-const SearchItem: FC<SearchItemProps> = ({name}) => {
-  return <div onClick={() => console.log(name)} className='hover:bg-blue-200 hover:cursor-pointer rounded-sm p-1 '>{name}</div>
-}
+const SearchItem: FC<SearchItemProps> = ({ name }) => {
+  const { setCardData } = useContext(CardContext);
 
-export default SearchItem
+  const handleClick = async (name: string) => {
+    const data = await searchCard(name);
+    setCardData(data);
+  };
+
+  return (
+    <div
+      onClick={() => handleClick(name)}
+      className="hover:bg-blue-200 hover:cursor-pointer rounded-sm p-1 "
+    >
+      {name}
+    </div>
+  );
+};
+
+export default SearchItem;
