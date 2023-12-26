@@ -1,5 +1,4 @@
-import {Card} from "@prisma/client"
-const exampleData: Card[] = [
+const exampleData = [
   {
     id: "1",
     name: "Black Lotus",
@@ -8,7 +7,6 @@ const exampleData: Card[] = [
     quantity: 1,
     foil: false,
     price: 10000,
-    collectionId: "collection-1",
   },
   {
     id: "2",
