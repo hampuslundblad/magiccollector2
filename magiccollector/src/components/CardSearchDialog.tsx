@@ -1,3 +1,4 @@
+"use client"
 import {
   Dialog,
   DialogContent,
@@ -8,13 +9,14 @@ import {
   DialogClose,
 } from "@/components/ui/dialog";
 
-import { FC, useContext } from "react";
+import { FC, useContext, useState } from "react";
 import { buttonVariants } from "./ui/Button";
 import { cn } from "@/lib/utils";
 import { Input } from "./ui/input";
 import Search from "./Search";
 import { AddCardForm } from "./AddCardForm";
 import { CardContext } from "@/lib/CardContext";
+import { CardData } from "@/app/cards/page";
 
 type CardSearchDialogProps = {
   isOpen: boolean;
@@ -22,7 +24,8 @@ type CardSearchDialogProps = {
 
 
 const CardSearchDialog = ({isOpen} :CardSearchDialogProps) => {
-  const {cardData,} = useContext(CardContext)
+  const [cardData, setCardData] = useState<CardData>()
+  console.log(cardData)
   return (
     <Dialog>
       <DialogTrigger
@@ -36,7 +39,7 @@ const CardSearchDialog = ({isOpen} :CardSearchDialogProps) => {
           <DialogDescription>Add a card to your collection.</DialogDescription>
         </DialogHeader>
         <DialogTitle> Name </DialogTitle>
-        <Search />
+        <Search setCardData={setCardData} />
 
      { cardData != undefined &&  <AddCardForm name={cardData.name} setDefault={cardData.sets[0]} sets={cardData.sets}/> }
       </DialogContent>

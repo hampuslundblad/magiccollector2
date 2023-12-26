@@ -1,10 +1,8 @@
-"use client"
-import { useState } from "react";
 import exampleData from "./data";
 import { columns } from "@/components/Columns";
 import { DataTable } from "@/components/DataTable";
-import { CardContext } from "@/lib/CardContext";
-
+import { authOptions, getAuthSession } from "@/lib/auth";
+import { redirect } from 'next/navigation'
 
 
 export type CardData = {
@@ -14,14 +12,14 @@ export type CardData = {
   image_uri : string
 };
 
-const Page = ({}) => {
-  const [cardData, setCardData] = useState<CardData>()
+const Page = async ({}) => {
+  const session = await getAuthSession()
+  if (!session?.user) {
+    redirect(authOptions?.pages?.signIn || '/login')
+  }  
   return (
     <>
-      <CardContext.Provider value={{cardData, setCardData}}>
-  
         <DataTable data={exampleData} columns={columns} />
-      </CardContext.Provider>
     </>
   );
 };
